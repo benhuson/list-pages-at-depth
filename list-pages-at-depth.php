@@ -67,7 +67,10 @@ function list_pages_at_depth_parent( $page_id, $result ) {
 
 
 function shortcode_list_pages_at_depth( $atts, $content, $tag ) {
-	return list_pages_at_depth( $atts );
+	$atts['echo'] = 0;
+	$pages = list_pages_at_depth( $atts );
+	$class = isset( $atts['class'] ) ? ' class="list-pages-at-depth ' . $atts['class'] . '"' : 'list-pages-at-depth';
+	return '<ul' . $class . '>' . $pages . '</ul>';
 }
 
 add_shortcode( 'list-pages-at-depth', 'shortcode_list_pages_at_depth' );

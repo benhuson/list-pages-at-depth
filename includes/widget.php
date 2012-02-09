@@ -36,7 +36,7 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 			if ( $title ) {
 				echo $before_title . $title . $after_title;
 			}
-			echo '<ul>' . $out . '</ul>';
+			echo '<ul class="list-pages-at-depth">' . $out . '</ul>';
 			echo $after_widget;
 		}
 		
