@@ -7,8 +7,10 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 	 */
 	function WP_Widget_Pages_at_Depth_at_Depth() {
 
-		$widget_ops = array( 'classname' => 'widget_pages', 'description' => __( 'Your blog&#8217;s WordPress Pages configured by depth' ) );
-		$this->WP_Widget( 'pages_at_depth', __( 'Pages at Depth' ), $widget_ops );
+		$this->WP_Widget( 'pages_at_depth', __( 'Pages at Depth' ), array(
+			'classname'   => 'widget_pages',
+			'description' => __( 'Your blog&#8217;s WordPress Pages configured by depth'
+		) ) );
 
 	}
 
@@ -25,8 +27,9 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 		$depth = $instance['depth'] > 0 ? $instance['depth'] : 0;
 		$exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
 
-		if ( $sortby == 'menu_order' )
+		if ( $sortby == 'menu_order' ) {
 			$sortby = 'menu_order, post_title';
+		}
 
 		$out = list_pages_at_depth( apply_filters( 'widget_pages_args', array(
 			'startdepth'  => $startdepth,
@@ -39,8 +42,9 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 
 		if ( ! empty( $out ) ) {
 			echo $before_widget;
-			if ( $title )
+			if ( $title ) {
 				echo $before_title . $title . $after_title;
+			}
 			echo '<ul class="list-pages-at-depth">' . $out . '</ul>';
 			echo $after_widget;
 		}

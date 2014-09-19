@@ -37,15 +37,16 @@ class List_Pages_At_Depth {
 
 		global $post;
 
-		if ( ! isset( $args['startdepth'] ) )
+		if ( ! isset( $args['startdepth'] ) ) {
 			$args['startdepth'] = 0;
+		}
 
 		if ( is_page() || $args['startdepth'] == 0 ) {
 			$result = array();
 			$result = $this->list_pages_at_depth_parent( $post->ID, $result );
 
 			if ( $args['startdepth'] < count( $result ) ) {
-				$args['child_of'] = $result[$args['startdepth']];
+				$args['child_of'] = $result[ $args['startdepth'] ];
 				return wp_list_pages( $args );
 			}
 		}
@@ -59,10 +60,12 @@ class List_Pages_At_Depth {
 
 		$page = get_page( $page_id );
 
-		if ( ! in_array( $page->ID, $result ) )
+		if ( ! in_array( $page->ID, $result ) ) {
 			array_unshift( $result, $page->ID );
-		if ( ! in_array( $page->post_parent, $result ) )
+		}
+		if ( ! in_array( $page->post_parent, $result ) ) {
 			array_unshift( $result, $page->post_parent );
+		}
 
 		if ( $page->post_parent == 0 ) {
 			return $result;
