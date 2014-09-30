@@ -70,9 +70,11 @@ class List_Pages_At_Depth {
 			$args['startdepth'] = 0;
 		}
 
-		if ( is_page() || $args['startdepth'] == 0 ) {
+		if ( 'page' == get_post_type() || $args['startdepth'] == 0 ) {
 			$result = array();
 			$result = $this->list_pages_at_depth_parent( $post->ID, $result );
+
+			$args['selected'] = $post->ID;
 
 			if ( $args['startdepth'] < count( $result ) ) {
 				$args['child_of'] = $result[ $args['startdepth'] ];
