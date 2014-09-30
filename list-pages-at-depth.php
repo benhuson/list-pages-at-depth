@@ -31,6 +31,35 @@ class List_Pages_At_Depth {
 	}
 
 	/**
+	 * Page List Item CSS Classes
+	 *
+	 * @param   array  $css_class     Classes.
+	 * @param   object $page          Page object.
+	 * @param   int    $depth         Depth.
+	 * @param   array  $args          Args.
+	 * @param   int    $current_page  Current page ID.
+	 * @return  array                 Classes.
+	 */
+	function page_css_class( $css_class, $page, $depth, $args, $current_page ) {
+
+		if ( get_the_ID() == $page->ID ) {
+			$css_class[] = 'current_page_item';
+		} else {
+			$ancestors = get_ancestors( get_the_ID(), 'page' );
+			if ( count( $ancestors ) > 0 ) {
+				if ( $ancestors[ count( $ancestors ) - 1 ] == $page->ID ) {
+					$css_class[] = 'current_page_parent';
+				} elseif ( in_array( $page->ID, $ancestors ) ) {
+					$css_class[] = 'current_page_ancestor';
+				}
+			}
+		}
+
+		return $css_class;
+
+	}
+
+	/**
 	 * List pages
 	 */
 	function list_pages( $args = '' ) {
@@ -47,7 +76,12 @@ class List_Pages_At_Depth {
 
 			if ( $args['startdepth'] < count( $result ) ) {
 				$args['child_of'] = $result[ $args['startdepth'] ];
-				return wp_list_pages( $args );
+
+				add_filter( 'page_css_class', array( $this, 'page_css_class' ), 10, 5 );
+				$list_pages = wp_list_pages( $args );
+				remove_filter( 'page_css_class', array( $this, 'page_css_class' ), 10, 5 );
+
+				return $list_pages;
 			}
 		}
 
