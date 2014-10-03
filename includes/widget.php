@@ -57,7 +57,7 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
-		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
 		if ( in_array( $new_instance['sortby'], array( 'post_title', 'menu_order', 'ID' ) ) ) {
 			$instance['sortby'] = $new_instance['sortby'];
@@ -66,8 +66,8 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 		}
 
 		$instance['exclude'] = strip_tags( $new_instance['exclude'] );
-		$instance['startdepth'] = $new_instance['startdepth'] > 0 ? $new_instance['startdepth'] : 0;
-		$instance['depth'] = $new_instance['depth'] > 0 ? $new_instance['depth'] : 0;
+		$instance['startdepth'] = $new_instance['startdepth'] > 0 ? absint( $new_instance['startdepth'] ) : 0;
+		$instance['depth'] = $new_instance['depth'] > 0 ? absint( $new_instance['depth'] ) : 0;
 
 		return $instance;
 
