@@ -2,8 +2,8 @@
 Contributors: husobj
 Tags: wp_list_pages, navigation, page parents, breadcrumbs, cms, widget
 Donate link: http://www.benhuson.co.uk/donate/
-Requires at least: 2.8
-Tested up to: 4.0
+Requires at least: 3.5
+Tested up to: 4.2
 Stable tag: 1.4
 License: GPLv2
 License URI: http://www.opensource.org/licenses/gpl-license.php
