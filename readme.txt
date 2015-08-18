@@ -3,8 +3,8 @@ Contributors: husobj
 Tags: wp_list_pages, navigation, page parents, breadcrumbs, cms, widget
 Donate link: http://www.benhuson.co.uk/donate/
 Requires at least: 3.5
-Tested up to: 4.2
-Stable tag: 1.4
+Tested up to: 4.3
+Stable tag: 1.5
 License: GPLv2
 License URI: http://www.opensource.org/licenses/gpl-license.php
 
@@ -32,6 +32,10 @@ You can contribute and [submit bug issues](https://github.com/benhuson/list-page
 
 
 == Changelog ==
+
+= 1.5 =
+
+* Use PHP 5 style constructors.
 
 = 1.4 =
 
@@ -65,6 +69,9 @@ You can contribute and [submit bug issues](https://github.com/benhuson/list-page
 * First Release.
 
 == Upgrade Notice ==
+
+= 1.5 =
+Use PHP 5 style constructors.
 
 = 1.4 =
 Sanitize widget fields when updating and add selected page classes.
