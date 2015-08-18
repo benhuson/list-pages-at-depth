@@ -22,7 +22,7 @@ class List_Pages_At_Depth {
 	/**
 	 * Constructor
 	 */
-	function List_Pages_At_Depth() {
+	function __construct() {
 
 		require_once( dirname( __FILE__ ) . '/includes/widget.php' );
 

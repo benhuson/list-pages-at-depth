@@ -5,9 +5,9 @@ class WP_Widget_Pages_at_Depth_at_Depth extends WP_Widget {
 	/**
 	 * Constructor
 	 */
-	function WP_Widget_Pages_at_Depth_at_Depth() {
+	function __construct() {
 
-		$this->WP_Widget( 'pages_at_depth', __( 'Pages at Depth' ), array(
+		parent::__construct( 'pages_at_depth', __( 'Pages at Depth' ), array(
 			'classname'   => 'widget_pages',
 			'description' => __( 'Your blog&#8217;s WordPress Pages configured by depth'
 		) ) );
